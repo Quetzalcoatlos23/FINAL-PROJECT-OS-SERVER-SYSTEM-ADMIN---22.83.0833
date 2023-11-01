@@ -1,2 +1,2 @@
 # FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833
-Proyek ini adalah panduan instalasi dan konfigurasi layanan server menggunakan Linux CentOS 7 sebagai sistem operasi utama. Kami memberikan langkah-langkah jelas untuk mengatur berbagai layanan server.
+Repository ini berisi Dokumentasi Instalasi dan Konfigurasi berbagai layanan Server, seperti NTP, DNS, SSH, WEB, Mail Server dll. Beberapa Service yang dijelaskan dalam Repository ini masih dalam proses pengembangan, meaning masih ada beberap service yang progressnya masih 70% jadi, kedepannya akan dikembangkan lagi.
