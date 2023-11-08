@@ -1,12 +1,13 @@
 # FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833
 Repository ini berisi Dokumentasi Instalasi dan Konfigurasi berbagai layanan Server, seperti NTP, DNS, SSH, WEB, Mail Server dll. Beberapa Service yang dijelaskan dalam Repository ini masih dalam proses pengembangan, meaning masih ada beberap service yang progressnya masih 70% jadi, kedepannya akan dikembangkan lagi.
 ## DAFTAR ISI
-1. Instalasi dan Konfigurasi SSH Server
-2. Instalasi dan Konfigurasi DNS Server
-3. Instalasi dan Konfigurasi NTP Server
-4. Instalasi dan Konfigurasi WEB Server
-5. Instalasi dan Konfigurasi Mail Server
-### 1. Instalasi dan Konfigurasi SSH Server
+1. [Instalasi dan Konfigurasi SSH Server](#1-Instalasi-dan-Konfigurasi-SSH-Server)
+2. [Instalasi dan Konfigurasi DNS Server](#2-Instalasi-dan-Konfigurasi-DNS-Server)
+3. [Instalasi dan Konfigurasi NTP Server](#3-Instalasi-dan-Konfiguras-NTP-Server)
+4. [Instalasi dan Konfigurasi WEB Server](#4-Instalasi-dan-Konfigurasi-WEB-Server)
+5. [Instalasi dan Konfigurasi Mail Server](#5-Instalasi-dan-Konfigurasi-Mail-Server)
+
+## 1. Instalasi dan Konfigurasi SSH Server
 #### 1.1 Konfigurasi SSH
 **Langkah 1: Buka dan konfigurasi file conf menggunakan text editor(nano/vi). Dikarenakan OpenSSH sudah terinstall Default pada CentOS 7, kita hanya akan langsung mengkonfigurasinya.**
 ```
@@ -26,7 +27,7 @@ systemctl restart sshd
 ssh root@ip_address -p 22
 ```
 **Disini saya menggunakan CMD dari Windows 10, karena Windows 10 sendiri sudah mendukung koneksi SSH jadi tidak perlu menggunakan software pihak ketiga lainnya. Dan "ip_address" disini adalah IP dari CentOS 7 yang digunakan.**
-### 2. Instalasi dan Konfigurasi DNS Server
+## 2. Instalasi dan Konfigurasi DNS Server
 #### 2.1 Instalasi DNS Server
 **Langkah 1: Instalasi BIND**
 ```
@@ -97,7 +98,7 @@ nano /etc/resolv.conf
 **Lalu test ping ke nama Domain dari Laptop Host**
 ![Capture25](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/e5e6df0e-b737-41fc-aae6-3d952839dfa0)
 
-### 3. Instalasi dan Konfigurasi NTP Server
+## 3. Instalasi dan Konfigurasi NTP Server
 #### 3.1 Instalasi dan Konfigurasi Chrony
 **Langkah 1: Install Chrony**
 ```
@@ -162,7 +163,7 @@ systemctl enable ntpdate
 ![Capture6](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/fc887727-501d-4141-a3ae-5e10b5fb40e7)
 ![Capture7](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/67715a73-bf9a-41d9-9512-d4304ba6a6d0)
 
-### 4. Instalasi dan Konfigurasi WEB Server
+## 4. Instalasi dan Konfigurasi WEB Server
 #### 4.1 Instalasi dan Konfigurasi HTTPd
 **Langkah 1: Install HTTPd**
 ```
@@ -299,7 +300,7 @@ systemctl restart httpd
 **Untuk pengetesan silahkan akses menggunakan browser dari PC Client lalu masukan pada url http://namadomain.com jika berhasil maka nama domain akan mengarah ke website yang kita buat.**
 ![Capture18](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/ed482a12-6bb8-4330-affb-c3fb8ee255d7)
 
-### 5. Instalasi dan Konfigurasi Mail Server
+## 5. Instalasi dan Konfigurasi Mail Server
 #### 5.1 Instalasi dan Konfigurasi Postfix
 **Langkah 1: Install Postfix**
 ```
