@@ -10,7 +10,8 @@ Beberapa Service yang telah saya install disini antara lain ada Web Server denga
 3. [Instalasi dan Konfigurasi NTP Server](#3-Instalasi-dan-Konfiguras-NTP-Server)
 4. [Instalasi dan Konfigurasi WEB Server](#4-Instalasi-dan-Konfigurasi-WEB-Server)
 5. [Instalasi dan Konfigurasi Mail Server](#5-Instalasi-dan-Konfigurasi-Mail-Server)
-6. 
+6. [Instalasi dan Konfigurasi Database Server](#6-Instalasi-dan-Konfigurasi-Database-Server)
+7. [Instalasi dan Konfigurasi WebMail](#7-Instalasi-dan-Konfigurasi-WebMail)
 
 ## 1. Instalasi dan Konfigurasi SSH Server
 #### 1.1 Konfigurasi SSH
@@ -39,13 +40,17 @@ ssh root@ip_address -p 22
 yum -y install bind bind-utils
 ```
 #### 2.2 Konfigurasi DNS Server
+
 **Langkah 1: Konfigurasi file named.conf seperti dibawah ini**
+
 ![Capture5](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/69acf65a-8d88-4816-be3e-0532cd405e51)
 
 **Disini saya menambahkan IP forwarder dengan menggunakan IP Gateway dan DNS Public 8.8.8.8 fungsinya ketika Client menggunakan IP DNS Lokal, maka Client masih dapat mengakses ke Internet. Silahkan sesuaikan dengan IP DNS masing-masing**
+
 ![Capture7](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/0d1c0a37-4362-49a5-a9d9-f1f26512524e)
 
 **Selanjutnya, saya akan menambahkan dua file Zone yaitu Forward Zone File dan Reverse Zone. Untuk nama domain disini saya menggunakan nama saya "georelbonai.com". Silahkan sesuaikan dengan nama domain masing-masing.**
+
 ![Capture8](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/43ce9bae-441c-469b-867a-23c603079152)
 
 **Langkah 2: Buat file baru untuk forward zone**
@@ -55,6 +60,7 @@ nano /var/named/db.georel.com
 **Bebas untuk menamainya, disana saya menggunakan nama**
 
 **Lalu tambahkan script seperti dibawah ini**
+
 ![Capture9](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/98acc4c5-3d23-4566-899b-576434ea9331)
 
 **Langkah 3: Buat file reverse zone**
@@ -65,6 +71,7 @@ nano /var/named/db.56.168.192
 ```
 
 **Tambahkan script seperti dibawah ini:**
+
 ![Capture10](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/ab57fe36-d9da-4458-94dd-8ff6ae0f590e)
 
 **Langkah 4: Simpan Konfigurasi dan Jalankan Service DNS**
@@ -77,6 +84,7 @@ systemctl start named
 systemctl enable named
 ```
 **Cek juga status Service DNS Server, pastikan service berjalan dengan baik**
+
 ![Capture12](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/19332ecd-3b0c-41ae-b7a8-44782034e7e9)
 
 #### 2.3 Tambahkan Firewall
@@ -98,9 +106,11 @@ nano /etc/resolv.conf
 **Langkah 1: Lakukan pengetesan**
 
 **Untuk pengetesan silahkan jalankan perintah nslookup nama domain, jika berhasil maka nama domain akan di translasikan ke alamat IP Address Server**
+
 ![Capture16](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/f2c42046-d328-48c7-b313-0ebe0cf26eaa)
 
 **Lalu test ping ke nama Domain dari Laptop Host**
+
 ![Capture25](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/e5e6df0e-b737-41fc-aae6-3d952839dfa0)
 
 ## 3. Instalasi dan Konfigurasi NTP Server
@@ -117,6 +127,7 @@ cp /etc/chrony.conf /etc/chrony.conf.backup
 **Langkah 3: Buka file chrony.conf lalu edit**
 
 **Buka file chrony.conf lalu edit seperti dibawah ini:**
+
 ![Capture5](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/e5c5300e-715f-4453-9462-98d6ce6f19f4)
 **Disana saya menggunakan server id dari Indonesia agar aturan Waktu akan mengikuti Waktu Indonesia**
 
@@ -128,6 +139,7 @@ systemctl start chronyd
 systemctl enable chronyd
 ```
 **Cek juga status service Chrony**
+
 ![Capture7](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/b7fe5a3c-fad1-4d33-8da4-39a269c315ae)
 **Langkah 5: Tambahkan Firewall pada Chrony**
 ```
@@ -138,6 +150,7 @@ firewall-cmd --reload
 ```
 #### 3.2 Pengetesan
 **Langkah 1: Jalankan perintah chronyc sources**
+
 ![Capture9](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/0c9d9a74-6416-4ff7-85a2-b319a3dfdc2b)
 
 #### 3.3 Pengetesan pada Client
@@ -155,6 +168,7 @@ firewall-cmd --reload
 **Langkah 3: Sinkronisasi NTP Server**
 
 **Untuk mensinkronisasi ke NTP Server, silahkan jalankan perintah berikut.**
+
 ![Capture4](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/b23c1130-11b9-45a0-a132-994f7f2d3e8a)
 
 **Langkah 4: Aktifkan Service NTPdate**
@@ -165,7 +179,9 @@ systemctl enable ntpdate
 **Langkah 1: Pengetesan pada Windows Client**
 
 **Untuk pengetesan pada Windwos Client, silahkan buka Setting Time Zone pada Windows lalu masukkan IP Address Server dan Klik "Update". Jika berhasil, maka PC Client akan "Syncronized" dengan Server.**
+
 ![Capture6](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/fc887727-501d-4141-a3ae-5e10b5fb40e7)
+
 ![Capture7](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/67715a73-bf9a-41d9-9512-d4304ba6a6d0)
 
 ## 4. Instalasi dan Konfigurasi WEB Server
@@ -181,7 +197,9 @@ yum -y install httpd
 nano /etc/httpd/conf/httpd.conf
 ```
 **Lalu edit file tersebut seperti dibawah ini:**
+
 ![Capture4](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/21a008bf-cf5c-499e-b7f1-b501b7119603)
+
 ![Capture5](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/17816ed9-9c56-4642-95a9-8e7508bfa543)
 
 **Langkah 3: Simpan Konfigurasi dan aktifkan service HTTPd**
@@ -202,7 +220,9 @@ firewall-cmd --reload
 
 #### 4.2 Pengetesan
 **Langkah 1: Test pada PC Client**
+
 ![Capture24](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/80a54ef5-3b40-4735-be2b-82adc75e558c)
+
 **Dikarenakan saya telah membuat DNS maka, saya dapat memanggil WEB Server dengan Domain saya**
 
 #### 4.3 Membuat Website Sederhana
@@ -282,6 +302,7 @@ systemctl restart httpd
 
 **Langkah 4: Pengetesan**
 **Untuk pengetesan silahkan akses menggunakan browser dari PC Client lalu masukan pada url http://ip_address_server/nama_folder_web jika berhasil maka akan mengarah ke website yang kita buat.**
+
 ![Capture14](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/3c9179da-e271-47fa-8b33-f0a476f1e632)
 
 #### 4.4 Membuat VirtualHost
@@ -296,6 +317,7 @@ cd /etc/httpd/conf.d/
 nano contoh.conf
 ```
 **Masukkan Script seperti dibawah ini:**
+
 ![Capture16](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/5f740221-033f-4b86-9421-7babf0f85234)
 
 **Langkah 2: Restart Service HTTPd**
@@ -303,6 +325,7 @@ nano contoh.conf
 systemctl restart httpd
 ```
 **Untuk pengetesan silahkan akses menggunakan browser dari PC Client lalu masukan pada url http://namadomain.com jika berhasil maka nama domain akan mengarah ke website yang kita buat.**
+
 ![Capture18](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/ed482a12-6bb8-4330-affb-c3fb8ee255d7)
 
 ## 5. Instalasi dan Konfigurasi Mail Server
@@ -351,6 +374,7 @@ yum -y install dovecot
 nano /etc/dovecot/dovecot.conf
 ```
 **Ubahlah .conf seperti dibawah ini:**
+
 ![Capture16](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/f212e3d8-31c4-4721-8459-50334a133b1b)
 
 **Langkah 3: Konfigurasi file 10-auth.conf**
@@ -358,7 +382,9 @@ nano /etc/dovecot/dovecot.conf
 nano /etc/dovecot/conf.d/10-auth.conf
 ```
 **Ubahlah .conf seperti dibawha ini:**
+
 ![Capture18](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/a90f49c8-cc91-48b9-a1f6-83698ea8627e)
+
 ![Capture19](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/f840b454-c1cb-43a7-8c99-e4c8835a590a)
 
 **Langkah 4: Konfigurasi file 10-mail.conf**
@@ -366,6 +392,7 @@ nano /etc/dovecot/conf.d/10-auth.conf
 nano /etc/dovecot/conf.d/10-mail.conf
 ```
 **Ubahlah .conf seperti dibawah ini:**
+
 ![Capture21](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/e2340f3f-2dfe-4560-ba05-a892aa432a61)
 
 **Langkah 5: Konfigurasi file 10-master.conf**
@@ -373,6 +400,7 @@ nano /etc/dovecot/conf.d/10-mail.conf
 nano /etc/dovecot/conf.d/10-master.conf
 ```
 **Ubahlah .conf seperti dibawah in:**
+
 ![Capture23](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/aa6a4ce4-77d1-4f5d-9564-3d4a1422c5cb)
 
 **Langkah 6: Konfigurasi file 10-ssl.conf**
@@ -380,6 +408,7 @@ nano /etc/dovecot/conf.d/10-master.conf
 nano /etc/dovecot/conf.d/10-ssl.conf
 ```
 **Ubahlah .conf seperti dibawah ini**
+
 ![Capture25](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/8f7c448f-9681-4e7d-9ddb-a3db6f9a44fd)
 
 **Langkah 7: Aktifkan dan Jalankan service Dovecot**
@@ -424,6 +453,7 @@ Hello World #Enter
 quit #Enter
 ```
 **Contoh**
+
 ![Capture37](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/f18ebf70-1c41-45cc-809a-b6a0a4adf447)
 
 ## 6. Instalasi dan Konfigurasi Database Server
@@ -453,6 +483,7 @@ systemctl enable mariadb
 mysql_secure_installation
 ```
 **Ikut beberapa baris kode perintah seperti dibawah ini:**
+
 ![Capture7](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/03809c78-9cf2-4305-98ea-b1a16b5219ba)
 
 #### 6.2 Instalasi dan Konfigurasi PhpMyAdmin
@@ -465,12 +496,13 @@ yum --enablerepo=epel -y install phpMyAdmin php-mysql php-mcrypt
 nano /etc/httpd/conf.d/phpMyAdmin.conf
 ```
 ![Capture](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/676aa369-0fc7-4719-ad63-2252d10d5160)
+
 **Langkah 3: Mulai kembali Service Apache**
 ```
 systemctl restart httpd
 ```
 #### 6.3 Pengetesan
-**Langkh 1: Akses PhpMyAdmin**
+**Langkah 1: Akses PhpMyAdmin**
 ```
 http://hostname_or_ip/phpmyadmin/
 ```
@@ -478,7 +510,9 @@ http://hostname_or_ip/phpmyadmin/
 
 ## 7. Instalasi dan Konfigurasi WebMail
 #### 7.1 Instalasi dan Konfigurasi SquirrelMail
+
 **Langkah 1: Instalasi SquirrelMail**
+
 ![Capture](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/a628578b-032b-454c-9352-03668e3d154c)
 
 ![Capture3](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/3629c118-b4e8-4b6d-8c47-33a274b2c6bd)
@@ -496,7 +530,9 @@ http://hostname_or_ip/phpmyadmin/
 ![Capture9](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/b6712371-e736-4875-8fda-05d68177bce7)
 
 **Langkah 2: Jalankan Scriptnya**
+
 **Ikut beberapa baris kode dibawah ini**
+
 ![Capture10](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/d26d0237-9da2-4dff-8b90-bfcee0b812b2)
 
 ![Capture11](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/5fbcd9c8-5ef2-436d-92a6-1391c4ec59bc)
