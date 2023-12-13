@@ -12,6 +12,7 @@ Beberapa Service yang telah saya install disini antara lain ada Web Server denga
 5. [Instalasi dan Konfigurasi Mail Server](#5-Instalasi-dan-Konfigurasi-Mail-Server)
 6. [Instalasi dan Konfigurasi Database Server](#6-Instalasi-dan-Konfigurasi-Database-Server)
 7. [Instalasi dan Konfigurasi WebMail](#7-Instalasi-dan-Konfigurasi-WebMail)
+8. [Pemasangan SSL (Self Sign Certificate)](#8-Pemasangan-SSL-(Self-Sign-Certificate))
 
 ## 1. Instalasi dan Konfigurasi SSH Server
 #### 1.1 Konfigurasi SSH
@@ -664,3 +665,95 @@ https://georelbonai.com/webmail/
 ```
 ![Capture41](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/13596905-4b91-4ef9-8978-30345148f567)
 ![Capture42](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/d96880eb-68c7-4df3-b207-bac58da03500)
+
+## 8. Pemasangan SSL (Self Sign Certificate)
+#### 8.1 Instalasi dan Konfigurasi Certbot
+**Langkah 1: Install Certbot**
+```
+yum install certbot
+```
+
+**Langkah 2: Pasang SSL Certbot pada Domain-mu(disini saya menggunakan Domain yang sudah dibuat sejak DNS)**
+```
+certbot certonly --webroot -w /var/www/html -d www.georelbonai.com
+```
+**Setelah itu tekan Y untuk setuju**
+
+![Capture1](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/3d9a658b-ea74-4307-bd67-f920cc38af2a)
+
+#### 8.2 Instalasi dan Konfigurasi OpenSSL
+**langkah 1: Install OpenSSL**
+```
+yum install -y mod_ssl openssl
+```
+
+**Langkah 2: Kemudian masuk pada direktori /etc/pki/tls/certs/ lalu buat sertifikat dengan nama server.key. Dan jangan lupa Masukkan Password untuk Pass Phrase**
+```
+cd /etc/pki/tls/certs/
+```
+```
+openssl genrsa -aes128 > server.key
+```
+![Capture3](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/38af975c-0f90-4b62-af28-40332558590a)
+
+**Langkah 3: Kemudian hapus passphrase dari private.key dan masukkan Pass Phrase yang dibuat tadi**
+```
+openssl rsa -in server.key -out server.key
+```
+![Capture4](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/77e3591b-c3bd-4cec-8aa6-3a6bcc2f9100)
+
+**Langkah 4: Selanjutnya buat sertifikat CSR**
+```
+openssl req -utf8 -new -key server.key -out server.csr
+```
+![Capture5](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/149d00e5-d841-4e86-9ee0-17edef120c16)
+
+**Langkah 5: Kemudian atur waktu valid dari certificate**
+```
+openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 3650
+```
+![Capture6](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/8fb29b7d-7cc4-47ef-b4b0-ff0b46a795cb)
+
+**Langkah 6: Ganti permission file lalu Copy file server.key ke direktori /etc/pki/tls/private/**
+```
+chmod 600 server.key
+```
+```
+cp server.key /etc/pki/tls/private
+```
+![Capture7](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/95be9545-7d9c-446b-a4b7-a24258b94113)
+
+**Langkah 7: Edit file ssl.conf**
+```
+nano /etc/httpd/conf.d/ssl.conf
+```
+**Ubahlah beberapa Baris kode seperti dibawah ini**
+
+![Capture9](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/008d40f0-0357-4958-ba06-8f3ca58112bc)
+
+**Langkah 8: Edit VirtualHost pada contoh.conf**
+```
+nano /etc/httpd/conf.d/contoh.conf
+```
+**Ubahlah beberapa Baris kode seperti dibawah ini**
+
+![Capture10](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/0322646f-fca0-4bef-98c1-0bb34fafb777)
+
+**Langkah 9: Mulai kembali service Apache**
+```
+systemctl restart httpd
+```
+**Langkah 10: Tambahkan Firewall jika diperlukan**
+```
+firewall-cmd --add-service=https --permanent
+```
+```
+firewall-cmd --reload
+```
+#### 8.3 Pengetesan
+**Langkah 1: Akses IP address atau Domain kalian dengan https://**
+```
+https://georelbonai.com
+```
+**Jika ada peringatan abaikan saja, dan tekan "Advanced" lalu klik "Accept the Risk and Continue"**
+![Capture11](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/00f199b8-51c3-4608-b140-df1d534f0009)
