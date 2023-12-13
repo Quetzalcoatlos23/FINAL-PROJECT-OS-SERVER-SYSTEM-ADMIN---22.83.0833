@@ -12,7 +12,7 @@ Beberapa Service yang telah saya install disini antara lain ada Web Server denga
 5. [Instalasi dan Konfigurasi Mail Server](#5-Instalasi-dan-Konfigurasi-Mail-Server)
 6. [Instalasi dan Konfigurasi Database Server](#6-Instalasi-dan-Konfigurasi-Database-Server)
 7. [Instalasi dan Konfigurasi WebMail](#7-Instalasi-dan-Konfigurasi-WebMail)
-8. [Pemasangan SSL (Self Sign Certificate)](#8-Pemasangan-SSL-(Self-Sign-Certificate))
+8. [Pemasangan SSL Self Sign Certificate](#8-Pemasangan-SSL-Self-Sign-Certificate)
 
 ## 1. Instalasi dan Konfigurasi SSH Server
 #### 1.1 Konfigurasi SSH
