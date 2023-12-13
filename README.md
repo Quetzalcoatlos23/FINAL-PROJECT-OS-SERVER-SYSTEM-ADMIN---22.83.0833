@@ -1,4 +1,4 @@
-![Capture5](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/67bfa142-955f-4266-9ca1-54630b08d022)# FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833
+# FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833
 Repository ini berisi Dokumentasi Instalasi dan Konfigurasi berbagai layanan Server, seperti NTP, DNS, SSH, WEB, Mail Server dll. Beberapa Service yang dijelaskan dalam Repository ini masih dalam proses pengembangan, meaning masih ada beberap service yang progressnya masih 70% jadi, kedepannya akan dikembangkan lagi.
 
 **Update**
