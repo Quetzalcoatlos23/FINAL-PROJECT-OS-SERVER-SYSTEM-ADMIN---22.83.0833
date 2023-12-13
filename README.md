@@ -480,21 +480,35 @@ http://hostname_or_ip/phpmyadmin/
 #### 7.1 Instalasi dan Konfigurasi SquirrelMail
 **Langkah 1: Instalasi SquirrelMail**
 ![Capture](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/a628578b-032b-454c-9352-03668e3d154c)
+
 ![Capture3](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/3629c118-b4e8-4b6d-8c47-33a274b2c6bd)
+
 ![Capture4](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/e35648f8-a157-4dd0-a7d1-27f79e7404ec)
+
 ![Capture5](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/0ee4219a-a5ce-4cb1-a1a1-2941e5287e05)
+
 ![Capture6](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/c62be8e5-67ab-4077-ae25-4f796f13966f)
+
 ![Capture7](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/853ac5c6-8df5-4f08-bf36-3b13f9b9223d)
+
 ![Capture8](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/99560983-9a6e-4593-98fd-1fcb415d391c)
+
 ![Capture9](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/b6712371-e736-4875-8fda-05d68177bce7)
 
 **Langkah 2: Jalankan Scriptnya**
 **Ikut beberapa baris kode dibawah ini**
 ![Capture10](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/d26d0237-9da2-4dff-8b90-bfcee0b812b2)
+
 ![Capture11](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/5fbcd9c8-5ef2-436d-92a6-1391c4ec59bc)
+
 ![Capture12](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/51d07313-9d45-4a0c-9ebd-a3b7fc1fba08)
+
 ![Capture13](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/88acfe6c-ae7e-49d0-95d6-9535302920e3)
+
 ![Capture14](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/6a30f01f-6064-4795-8aca-e3439e442526)
+
 ![Capture15](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/d77250e6-5df4-426c-9fd8-826c68dd8de1)
+
 ![Capture16](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/f4293532-aed4-40cc-81cd-49ba332af049)
+
 ![Capture17](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/a85dd031-2b38-4a57-bb35-8edf6cc0f9f0)
