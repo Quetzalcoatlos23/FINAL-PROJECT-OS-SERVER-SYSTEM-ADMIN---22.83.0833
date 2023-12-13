@@ -512,39 +512,155 @@ http://hostname_or_ip/phpmyadmin/
 #### 7.1 Instalasi dan Konfigurasi SquirrelMail
 
 **Langkah 1: Instalasi SquirrelMail**
-
-![Capture](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/a628578b-032b-454c-9352-03668e3d154c)
-
-![Capture3](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/3629c118-b4e8-4b6d-8c47-33a274b2c6bd)
-
-![Capture4](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/e35648f8-a157-4dd0-a7d1-27f79e7404ec)
-
-![Capture5](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/0ee4219a-a5ce-4cb1-a1a1-2941e5287e05)
-
-![Capture6](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/c62be8e5-67ab-4077-ae25-4f796f13966f)
-
-![Capture7](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/853ac5c6-8df5-4f08-bf36-3b13f9b9223d)
-
-![Capture8](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/99560983-9a6e-4593-98fd-1fcb415d391c)
-
-![Capture9](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/b6712371-e736-4875-8fda-05d68177bce7)
+```
+yum --enablerepo=epel -y install squirrelmail php-mysql
+```
+```
+curl -O https://www.squirrelmail.org/plugins/compatibility-2.0.16-1.0.tar.gz
+```
+```
+curl -O https://www.squirrelmail.org/plugins/empty_trash-2.0-1.2.2.tar.gz
+```
+```
+curl -O https://www.squirrelmail.org/plugins/secure_login-1.4-1.2.8.tar.gz
+```
+```
+tar zxvf compatibility-2.0.16-1.0.tar.gz -C /usr/share/squirrelmail/plugins 
+```
+```
+tar zxvf empty_trash-2.0-1.2.2.tar.gz -C /usr/share/squirrelmail/plugins
+```
+```
+tar zxvf secure_login-1.4-1.2.8.tar.gz -C /usr/share/squirrelmail/plugins
+```
+```
+rm -f ./*.tar.gz
+```
 
 **Langkah 2: Jalankan Scriptnya**
 
-**Ikut beberapa baris kode dibawah ini**
-
-![Capture10](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/d26d0237-9da2-4dff-8b90-bfcee0b812b2)
+**Ikut beberapa perintah baris kode seperti dibawah ini**
+```
+/usr/share/squirrelmail/config/conf.pl
+```
+**Pilih 1**
 
 ![Capture11](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/5fbcd9c8-5ef2-436d-92a6-1391c4ec59bc)
 
+**Pilih 5, setelah itu atur Logout Page**
+
 ![Capture12](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/51d07313-9d45-4a0c-9ebd-a3b7fc1fba08)
+
+**Pilih r, untuk kembali ke menu utama**
 
 ![Capture13](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/88acfe6c-ae7e-49d0-95d6-9535302920e3)
 
+**Pilih 2 untuk masuk ke Settingan Server**
+
 ![Capture14](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/6a30f01f-6064-4795-8aca-e3439e442526)
+
+**Pilih 1, dan masukkan domain di baris [Localhost]**
 
 ![Capture15](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/d77250e6-5df4-426c-9fd8-826c68dd8de1)
 
+**Pilih 3, dan Masukkan 2(SMTP)**
+
 ![Capture16](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/f4293532-aed4-40cc-81cd-49ba332af049)
 
+**Pilih A, untuk update IMAP Settings**
+
 ![Capture17](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/a85dd031-2b38-4a57-bb35-8edf6cc0f9f0)
+
+**Pilih 4, untuk mengisi IMAP Server pada "[localhost]:"**
+
+![Capture18](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/7b974bba-6faa-404e-99b5-cef7df0de24a)
+
+**Pilih 8, dan Masukkan "dovecot" pada baris "[uw]"**
+
+![Capture19](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/d8ab4a5f-df0b-48ca-8d01-3c8219172e31)
+
+![Capture20](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/ea7c49ab-2210-453d-a4a1-95211a5c3d61)
+
+**Pilih 9, dan masukkan "detect" pada "[/]"**
+
+![Capture21](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/ad1771b5-899e-43a2-91ba-6914a72c032a)
+
+![Capture22](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/eb9a8ee4-efe7-440f-a701-d4a31b050890)
+
+**Pilih B, untuk mengupdate settingan SMTP**
+
+![Capture23](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/dc32ccb3-5c8a-4cea-a2cb-69f3d531f45c)
+
+**Pilih 4, untuk mengisi SMTP Server di "[localhost]:"**
+
+![Capture24](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/251c1797-b7d0-41dd-a41d-a1281679b844)
+
+**Pilih 7, dan Tekan y untuk terima, setelah itu masukkan "login" dan masukkan "N"**
+
+![Capture25](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/cf9de928-2692-431c-90d5-bcc6261f2895)
+
+![Capture26](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/626bf8d1-4cd7-4c77-b039-68a1caefc5ad)
+
+**Pilih r, untuk kembali ke Menu Utama**
+
+![Capture27](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/5aec5fd1-a89b-49c8-97e0-9f176c469664)
+
+**Pilih 4, untuk masuk ke General Options**
+
+![Capture28](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/da7b1ac5-50b7-4487-a4aa-9e5a8b64245c)
+
+**Pilih 7, dan tekan "y"**
+
+![Capture29](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/07dd5ddb-f679-4dad-8be3-8d15a6e4e17c)
+
+**Pilih r, untuk kembali Menu Utama**
+
+![Capture30](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/8bdb2ec1-ab95-4d1f-84fc-16598c3441c6)
+
+**Pilih 8, untuk masuk ke menu Plugins**
+
+![Capture31](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/c78aadef-7752-4c2a-b9c9-b5b0a26adb70)
+
+**Pilih 7, untuk menambahkan "Compatibility"**
+
+![Capture32](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/e44fdb89-24ef-4ed0-9d2e-cc8674e4a97f)
+
+**Pilih 8, untuk menambahkan "Empty Trash"**
+
+![Capture33](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/05b1892d-65b2-4673-8464-cb37212f2049)
+
+**Pilih 15, untuk menambahkan "secure_login"**
+
+![Capture34](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/ccfbb73c-862e-4bfa-b66b-23003d68ec94)
+
+**Pilih q, untuk keluar dan Save**
+
+![Capture35](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/f9eaaf0c-1116-484b-af81-49a9829b8711)
+
+**Langkah 3: Salin config.sample.php ke config.php**
+```
+cp /usr/share/squirrelmail/plugins/secure_login/config.sample.php /usr/share/squirrelmail/plugins/secure_login/config.php
+```
+
+**Langkah 4: Edit file config.php**
+```
+nano /usr/share/squirrelmail/plugins/secure_login/config.php
+```
+![Capture38](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/dfaae79e-5c56-4e51-b4ba-520b5855127d)
+
+**Langkah 5: Mulai ulang service Apache**
+```
+systemctl restart httpd
+```
+
+**Langkah 6: Matikan Selinux**
+```
+setsebool -P httpd_can_network_connect on
+```
+#### 7.2 Pengetesan WebMail
+**Langkah 1: Akses ke WebMail kamu via https://server's name or IP/webmail/**
+```
+https://georelbonai.com/webmail/
+```
+![Capture41](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/13596905-4b91-4ef9-8978-30345148f567)
+![Capture42](https://github.com/Quetzalcoatlos23/FINAL-PROJECT-OS-SERVER-SYSTEM-ADMIN---22.83.0833/assets/114808262/d96880eb-68c7-4df3-b207-bac58da03500)
